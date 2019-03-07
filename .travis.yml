@@ -7,10 +7,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t farhansajid2/multi-test -f ./client/Dockerfile.dev ./client
+  - docker build -t farhansajid2/react-test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - docker run farhansajid2/multi-test npm run test -- --coverage
+  - docker run farhansajid2/react-test npm test -- --coverage
 
 after_sucess:
   - docker build -t farhansajid2/multi-client ./client
