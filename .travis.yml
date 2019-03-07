@@ -1,0 +1,42 @@
+language: node_js
+node_js:
+  - "11.10.0"
+
+sudo : required
+services:
+  - docker
+
+before_install:
+  - docker build -t farhansajid2/multi-test -f .client/Dockerfile.dev ./client
+
+scripts:
+  - docker run farhansajid2/multi-test npm run test -- --coverage
+
+after_sucess:
+  - docker build -t farhansajid2/multi-client ./client
+  - docker build -t farhansajid2/multi-nginx ./nginx
+  - docker build -t farhansajid2/multi-server ./server
+  - docker build -t farhansajid2/multi-worker ./worker
+
+  # login to docker-hub, and use the password as stdin for the password
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+  # pushing the images to docker hub
+  - docker push farhansajid2/multi-client
+  - docker push farhansajid2/multi-nginx
+  - docker push farhansajid2/multi-server
+  - docker push farhansajid2/multi-worker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
