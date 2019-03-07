@@ -9,10 +9,10 @@ services:
 before_install:
   - docker build -t farhansajid2/react-test -f ./client/Dockerfile.dev ./client
 
-scripts:
+script:
   - docker run farhansajid2/react-test npm test -- --coverage
 
-after_sucess:
+after_success:
   - docker build -t farhansajid2/multi-client ./client
   - docker build -t farhansajid2/multi-nginx ./nginx
   - docker build -t farhansajid2/multi-server ./server
