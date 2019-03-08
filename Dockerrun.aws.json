@@ -6,7 +6,7 @@
       "image": "farhansajid2/multi-client",
       "hostname": "client",
       "essential": false,
-      "memory": 200
+      "memory": 128
 
     },
     {
@@ -14,7 +14,7 @@
       "image": "farhansajid2/multi-server",
       "hostname": "api",
       "essential": false,
-      "memory": 200
+      "memory": 128
 
     },
      {
@@ -22,7 +22,7 @@
       "image": "farhansajid2/multi-worker",
       "hostname": "worker",
       "essential": false,
-       "memory": 200
+       "memory": 128
     },
      {
       "name": "nginx",
@@ -36,7 +36,7 @@
          }
        ],
        "links": ["client", "server"],
-       "memory": 200
+       "memory": 128
 
     }
 
