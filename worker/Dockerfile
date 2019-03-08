@@ -3,7 +3,7 @@ MAINTAINER Farhan Sajid <farhansajid7861@gmail.com>
 
 WORKDIR /app
 # Copying and installing the dependencies
-COPY package.json .
+COPY ./package.json ./
 RUN npm install
 
 # Copy the rest
